@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@reference "tailwindcss";
+
+/* Theme Vars */
+:root {
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 210 40% 98%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 250 47% 60%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 200 40% 50%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 210 40% 90%;
+  --muted-foreground: 222 47% 30%;
+  --accent: 280 60% 70%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214 32% 91%;
+  --input: 210 40% 98%;
+  --ring: 250 47% 60%;
+  --radius: 0.5rem;
+  --chart-1: 30 100% 60%;
+  --chart-2: 220 100% 70%;
+  --chart-3: 120 60% 70%;
+  --chart-4: 45 100% 65%;
+  --chart-5: 280 70% 60%;
+}
+
+/* Dark mode overrides */
+.dark {
+  --background: 222 47% 4%;
+  --foreground: 213 31% 91%;
+  --card: 222 47% 8%;
+  --card-foreground: 213 31% 91%;
+  --popover: 222 47% 8%;
+  --popover-foreground: 213 31% 91%;
+  --primary: 250 65% 65%;
+  --primary-foreground: 213 31% 91%;
+  --secondary: 250 65% 65%;
+  --secondary-foreground: 213 31% 91%;
+  --muted: 222 47% 30%;
+  --muted-foreground: 213 31% 91%;
+  --accent: 260 60% 70%;
+  --accent-foreground: 213 31% 91%;
+  --destructive: 350 75% 60%;
+  --destructive-foreground: 213 31% 91%;
+  --border: 217 33% 20%;
+  --input: 222 47% 8%;
+  --ring: 250 65% 65%;
+}
+
+/* Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+@keyframes meteor {
+  0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+}
+
+/* Base Styles */
+@layer base {
+  /* Apply border color directly since border-border class might not exist */
+  * {
+    border-color: hsl(var(--border));
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    @apply transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Utilities & Custom Classes */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-pulse-subtle {
+    animation: pulse-subtle 4s ease-in-out infinite;
+  }
+  .animate-fade-in {
+    animation: fade-in 0.7s ease-out forwards;
+  }
+  .animate-meteor {
+    animation: meteor 5s linear infinite;
+  }
+  .container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+    max-width: 100%;
+  }
+  @media (min-width: 640px) {
+    .container { max-width: 640px; }
+  }
+  @media (min-width: 768px) {
+    .container { max-width: 768px; }
+  }
+  @media (min-width: 1024px) {
+    .container { max-width: 1024px; }
+  }
+  @media (min-width: 1280px) {
+    .container { max-width: 1280px; }
+  }
+  @media (min-width: 1400px) {
+    .container { max-width: 1400px; }
+  }
+  .text-glow {
+    @apply relative;
+    text-shadow: 0 0 10px rgba(167,139,250,0.5);
+  }
+  .card-hover {
+    @apply transition-transform duration-300;
+    transition-property: transform, box-shadow;
+  }
+  .card-hover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(35, 36, 39, 0.16);
+  }
+  .gradient-border {
+    @apply relative rounded-md;
+    background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
+  .cosmic-button {
+    @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300;
+    transition-property: box-shadow, transform;
+  }
+  .cosmic-button:hover {
+    box-shadow: 0 0 10px rgba(139,92,246,0.5);
+    transform: scale(1.05);
+  }
+  .cosmic-button:active {
+    transform: scale(0.95);
+  }
+  .star {
+    @apply absolute rounded-full bg-white;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+  }
+  .meteor {
+    @apply absolute from-white via-white to-transparent rounded-full;
+    box-shadow: 0 0 10px 5px rgba(255,255,255,0.3);
+    background-image: linear-gradient(to right, white, white, transparent);
+  }
+}
+
+/* Root app wrapper */
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px) scale(1.05); }
+  100% { transform: translateY(0); }
+}
+.bubble.animate-float {
+  animation: float infinite alternate;
+}
