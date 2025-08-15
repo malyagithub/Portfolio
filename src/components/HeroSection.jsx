@@ -55,7 +55,7 @@ export const HeroSection = () => {
             /> */}
 
             <img
-  src="/images/mmmmm.jpg"
+  src="/Profile/malya.png"
   alt="Malya Choudha"
   className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-white dark:border-gray-900
              transition-transform duration-500 ease-out hover:scale-105 hover:brightness-110"
