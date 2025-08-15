@@ -89,6 +89,9 @@
     @apply transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  html {
+  scroll-behavior: smooth;
+}
 }
 
 /* Utilities & Custom Classes */
