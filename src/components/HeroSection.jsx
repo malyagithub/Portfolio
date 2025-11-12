@@ -50,7 +50,7 @@ export const HeroSection = () => {
                       animate-fade-in hover:scale-105 hover:rotate-3 transition-transform duration-500 ease-out"
           >
             <img
-              src="/Profile/malya.png"
+              src="/Profile/malya_passport.jpg"
               alt="Malya Choudha"
               className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-white dark:border-gray-900
                        transition-transform duration-500 ease-out hover:scale-105 hover:brightness-110"
